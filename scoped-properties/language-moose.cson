@@ -1,0 +1,7 @@
+'.input.moose':
+  'editor':
+    'commentStart': '# '
+    'completions': [
+      'Kernels'
+      'AuxKernels'
+    ]

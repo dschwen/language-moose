@@ -1,0 +1,19 @@
+{
+  "name": "language-moose",
+  "version": "0.0.0",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "license": "MIT",
+  "description": "MOOSE Framework input file support in Atom",
+  "homepage": "http://atom.github.io/language-moose",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dschwen/language-moose.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dschwen/language-moose/issues"
+  },
+  "readmeFilename": "README.md"
+}
