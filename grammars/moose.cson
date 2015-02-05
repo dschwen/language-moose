@@ -2,8 +2,8 @@
 'fileTypes': [
   'i'
 ]
-'foldingStartMarker': '(^\\s*/\\*|(\\{|\\[|\\()\\s*$)'
-'foldingStopMarker': '(\\*/|^\\s*(\\}|\\]|\\)))'
+'foldingStartMarker': '(^\\s*\\[[^.]+\\]\\s*$)'
+'foldingStopMarker': '(^\\s*\\[\\]\\s*$)'
 'name': 'MOOSE Input'
 'patterns': [
   {
@@ -87,14 +87,25 @@
   }
   {
     # string parameters
-    'begin': '[a-z_A-Z0-9]+\\s*(=)\\s*\''
+    'begin': '[a-z_A-Z0-9]+\\s*(=)\\s*(\')'
     'beginCaptures':
       '1':
         'name': 'keyword.operator.assignment.moose'
+      '2':
+        'name': 'punctuation.definition.string.begin.moose'
     'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.moose'
     'patterns': [
       {
         'include': '#numbers'
+      }
+      {
+        'include': '#operators'
+      }
+      {
+        'include': '#fparser_variables'
       }
     ]
   }
@@ -112,9 +123,6 @@
         'include': '#numbers'
       }
     ]
-  }
-  {
-    'include': '#strings'
   }
 ]
 'repository':
@@ -139,7 +147,7 @@
             'name': 'constant.numeric.moose'
       }
       {
-        'match': '\\b(\\d+)[\\s\\n]'
+        'match': '\\b(\\d+)\\b'
         'captures':
           '1':
             'name': 'constant.numeric.moose'
@@ -153,8 +161,32 @@
       }
     ]
   'escaped_char':
-    'match': '\\\\.'
-    'name': 'constant.character.escape.moose'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escape.moose'
+      }
+    ]
+  'operators':
+    'patterns': [
+      {
+        'match': '[\\+\\*\\/\\^%\\-]'
+        'name': 'keyword.operator.moose'
+      }
+      {
+        'match': 'abs|acos|acosh|arg|asin|atan|atan2|atanh|cbrt|ceil|conj|cos|cosh|cot|csc|exp|exp2|floor|hypot|if|imag|int|log|log10|log2|max|min|polar|pow|real|sec|sin|sinh|sqrt|tan|tanh|trunc'
+        'name': 'support.function.moose'
+      }
+    ]
+  'fparser_variables':
+    'patterns': [
+      {
+        'match': '\\b([a-zA-Z][a-z_A-Z0-9]*)\\b'
+        'captures':
+          '1':
+            'name': 'variable.other.moose'
+      }
+    ]
   'line_comment':
     'patterns': [
       {
@@ -172,29 +204,5 @@
             'name': 'punctuation.definition.comment.moose'
         'match': '(#).*$\\n?'
         'name': 'comment.line.number-sign.puppet'
-      }
-    ]
-  'single-quoted-string':
-    'begin': '\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.moose'
-    'end': '\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.moose'
-    'name': 'string.quoted.single.moose'
-    'patterns': [
-      {
-        'include': '#escaped_char'
-      }
-      {
-        'include': '#numbers'
-      }
-    ]
-  'strings':
-    'patterns': [
-      {
-        'include': '#single-quoted-string'
       }
     ]
