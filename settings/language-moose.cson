@@ -1,0 +1,5 @@
+'.input.moose' :
+  'editor' :
+    'commentStart': '#'
+    'increaseIndentPattern': '^\\s*\\[[^\\.].*\\]$'
+    'decreaseIndentPattern': '^\\s*\\[\\..*\\]$'
