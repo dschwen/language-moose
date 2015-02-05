@@ -2,6 +2,18 @@
 
 Add syntax highlighting and snippets to MOOSE input files in Atom.
 
+![screenshot](http://i.imgur.com/57fmKBz.png)
+
+Syntax highlighting for:
+* Valid top level blocks
+* Valid sublevel blocks
+* Special highlight for the ```type = TypeName``` lines
+* Highlight valid Function Parser functions in parameter strings
+* Highlight valis parameters for shape function family/order and element type
+* Numbers and constrants (true/false)
+
+## MOOSE
+
 MOOSE is an opensource multiphysics finite element simulation framework, developed ad Idaho National Laboratory.
 
 Check out the [MOOSE Framework website](http://mooseframework.org) for more information.
