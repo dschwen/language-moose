@@ -10,10 +10,7 @@
     'include': '#line_comment'
   }
   {
-    'include': '#constants'
-  }
-  {
-    'match': '(\\[)(Mesh|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions)(\\])'
+    'match': '(\\[)(Bounds|Mesh|MeshModifiers|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions|GlobalParams|VectorPostprocessors|Dampers|DiracKernels|DGKernels|Constraints|NodalNormals|CoupledProblems|DeprecatedBlock|MultiApps|Transfers)(\\])'
     'captures':
       '1':
         'name': 'keyword.operator.moose'
@@ -23,7 +20,7 @@
         'name': 'keyword.operator.moose'
   }
   {
-    'match': '(\\[\\.\\/)(TimeStepper|Periodic|InitialCondition)(\\])'
+    'match': '(\\[\\.\\/)(TimeStepper|TimePeriods|Quadrature|Predictor|Adaptivity|Indicators|Markers|Periodic|InitialCondition|MortarInterfaces)(\\])'
     'captures':
       '1':
         'name': 'keyword.operator.moose'
@@ -65,189 +62,139 @@
         'name': 'keyword.operator.moose'
   }
   {
-    'match': '\\b(\\d*\\.\\d+)\\b'
+    'match': '\\border\\s*(=)\\s*(CONSTANT|FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH)\\b'
     'captures':
       '1':
-        'name': 'constant.numeric.moose'
-  }
-  {
-    'match': '\\b(\\d+e-{0,1}\\d+)\\b'
-    'captures':
-      '1':
-        'name': 'constant.numeric.moose'
-  }
-  {
-    'match': '\\b(\\d*\\.\\d+e-{0,1}\\d+)\\b'
-    'captures':
-      '1':
-        'name': 'constant.numeric.moose'
-  }
-  {
-    'match': '\\b(\\d+)[\\s\\n]'
-    'captures':
-      '1':
-        'name': 'constant.numeric.moose'
-  }
-  {
-    'begin': '(?x)^\\s*\n\t\t\t\t\t(node|class)\\s+\n\t\t\t\t\t((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\s* # identifier'
-    'captures':
-      '1':
-        'name': 'storage.type.puppet'
+        'name': 'keyword.operator.assignment.moose'
       '2':
-        'name': 'entity.name.type.class.puppet'
-    'end': '(?={)'
-    'name': 'meta.definition.class.puppet'
+        'name': 'constant.language.moose'
+  }
+  {
+    'match': '\\bfamily\\s*(=)\\s*(LAGRANGE|MONOMIAL|HERMITE|SCALAR|HIERARCHIC|CLOUGH|XYZ|SZABAB|BERNSTEIN|L2_LAGRANGE|L2_HIERARCHIC)\\b'
+    'captures':
+      '1':
+        'name': 'keyword.operator.assignment.moose'
+      '2':
+        'name': 'constant.language.moose'
+  }
+  {
+    'match': '\\belem_type\\s*(=)\\s*(EDGE|EDGE2|EDGE3|EDGE4|QUAD|QUAD4|QUAD8|QUAD9|TRI3|TRI6|HEX|HEX8|HEX20|HEX27|TET4|TET10|PRISM6|PRISM15|PRISM18)\\b'
+    'captures':
+      '1':
+        'name': 'keyword.operator.assignment.moose'
+      '2':
+        'name': 'constant.language.moose'
+  }
+  {
+    # string parameters
+    'begin': '[a-z_A-Z0-9]+\\s*(=)\\s*\''
+    'beginCaptures':
+      '1':
+        'name': 'keyword.operator.assignment.moose'
+    'end': '\''
     'patterns': [
       {
-        'begin': '\\b(inherits)\\b\\s+'
-        'captures':
-          '1':
-            'name': 'storage.modifier.puppet'
-        'end': '(?={)'
-        'name': 'meta.definition.class.inherits.puppet'
-        'patterns': [
-          {
-            'match': '\\b((?:[-_A-Za-z0-9".]+::)*[-_A-Za-z0-9".]+)\\b'
-            'name': 'support.type.puppet'
-          }
-        ]
+        'include': '#numbers'
       }
     ]
   }
   {
-    'captures':
+    'begin': '[a-z_A-Z0-9]+\\s*(=)\\s*'
+    'beginCaptures':
       '1':
-        'name': 'storage.type.puppet'
-      '2':
-        'name': 'entity.name.section.puppet'
-    'match': '^\\s*(\\w+)\\s*{\\s*([\'"].+[\'"]):'
-    'name': 'meta.definition.resource.puppet'
-  }
-  {
-    'match': '\\b(case|if|else)(?!::)\\b'
-    'name': 'keyword.control.puppet'
-  }
-  {
-    'match': '((\\$?)"?[a-zA-Z_\\x{7f}-\\x{ff}][a-zA-Z0-9_\\x{7f}-\\x{ff}]*"?):(?=\\s+|$)'
-    'name': 'entity.name.section.puppet'
+        'name': 'keyword.operator.assignment.moose'
+    'end': '\n'
+    'patterns': [
+      {
+        'include': '#constants'
+      }
+      {
+        'include': '#numbers'
+      }
+    ]
   }
   {
     'include': '#strings'
   }
-  {
-    'include': '#variable'
-  }
-  {
-    'begin': '(?i)\\b(import|include)\\b\\s*'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.import.include.puppet'
-    'end': '(?=\\s|$)'
-    'name': 'meta.include.puppet'
-  }
 ]
 'repository':
+  'numbers':
+    'patterns': [
+      {
+        'match': '\\b(\\d*\\.\\d+)\\b'
+        'captures':
+          '1':
+            'name': 'constant.numeric.moose'
+      }
+      {
+        'match': '\\b(\\d+e-{0,1}\\d+)\\b'
+        'captures':
+          '1':
+            'name': 'constant.numeric.moose'
+      }
+      {
+        'match': '\\b(\\d*\\.\\d+e-{0,1}\\d+)\\b'
+        'captures':
+          '1':
+            'name': 'constant.numeric.moose'
+      }
+      {
+        'match': '\\b(\\d+)[\\s\\n]'
+        'captures':
+          '1':
+            'name': 'constant.numeric.moose'
+      }
+    ]
   'constants':
     'patterns': [
       {
-        'match': '(?i)\\b(false|true|CONSTANT|FIRST|SECOND|THIRD|MONOMIAL|LAGRANGE|HERMITE)\\b'
+        'match': '(?i)\\b(false|true)\\b'
         'name': 'constant.language.moose'
       }
     ]
   'escaped_char':
     'match': '\\\\.'
-    'name': 'constant.character.escape.puppet'
+    'name': 'constant.character.escape.moose'
   'line_comment':
     'patterns': [
       {
         'captures':
           '1':
-            'name': 'comment.line.number-sign.puppet'
+            'name': 'comment.line.number-sign.moose'
           '2':
-            'name': 'punctuation.definition.comment.puppet'
+            'name': 'punctuation.definition.comment.moose'
         'match': '^((#).*$\\n?)'
         'name': 'meta.comment.full-line.puppet'
       }
       {
         'captures':
           '1':
-            'name': 'punctuation.definition.comment.puppet'
+            'name': 'punctuation.definition.comment.moose'
         'match': '(#).*$\\n?'
         'name': 'comment.line.number-sign.puppet'
-      }
-    ]
-  'parameter-default-types':
-    'patterns': [
-      {
-        'include': '#strings'
-      }
-      {
-        'include': '#numbers'
-      }
-      {
-        'include': '#variables'
-      }
-      {
-        'match': '='
-        'name': 'keyword.operator.assignment.puppet'
-      }
-      {
-        'begin': '(\\[)'
-        'beginCaptures':
-          '1':
-            'name': 'punctuation.definition.array.begin.puppet'
-        'end': '\\]'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.array.end.puppet'
-        'name': 'meta.array.puppet'
-        'patterns': [
-          {
-            'include': '#parameter-default-types'
-          }
-        ]
-      }
-      {
-        'include': '#constants'
       }
     ]
   'single-quoted-string':
     'begin': '\''
     'beginCaptures':
       '0':
-        'name': 'punctuation.definition.string.begin.puppet'
+        'name': 'punctuation.definition.string.begin.moose'
     'end': '\''
     'endCaptures':
       '0':
-        'name': 'punctuation.definition.string.end.puppet'
-    'name': 'string.quoted.single.puppet'
+        'name': 'punctuation.definition.string.end.moose'
+    'name': 'string.quoted.single.moose'
     'patterns': [
       {
         'include': '#escaped_char'
+      }
+      {
+        'include': '#numbers'
       }
     ]
   'strings':
     'patterns': [
       {
         'include': '#single-quoted-string'
-      }
-    ]
-  'variable':
-    'patterns': [
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.variable.puppet'
-        'match': '(\\$)([a-zA-Zx7f-xff\\$]|::)([a-zA-Z0-9_x7f-xff\\$]|::)*\\b'
-        'name': 'variable.other.readwrite.global.puppet'
-      }
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.variable.puppet'
-          '2':
-            'name': 'punctuation.definition.variable.puppet'
-        'match': '(\\$\\{)(?:[a-zA-Zx7f-xff\\$]|::)(?:[a-zA-Z0-9_x7f-xff\\$]|::)*(\\})'
-        'name': 'variable.other.readwrite.global.puppet'
       }
     ]
