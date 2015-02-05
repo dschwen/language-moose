@@ -86,6 +86,42 @@
         'name': 'constant.language.moose'
   }
   {
+    # output_on parameters
+    'begin': '\\boutput_on\\s*(=)\\s*(\')'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.operator.assignment.moose'
+      '2':
+        'name': 'punctuation.definition.string.begin.moose'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.moose'
+    'patterns': [
+      {
+        'include': '#output_on'
+      }
+    ]
+  }
+  {
+    # execute_on parameters
+    'begin': '\\bexecute_on\\s*(=)\\s*(\')'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.operator.assignment.moose'
+      '2':
+        'name': 'punctuation.definition.string.begin.moose'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.moose'
+    'patterns': [
+      {
+        'include': '#execute_on'
+      }
+    ]
+  }
+  {
     # string parameters
     'begin': '[a-z_A-Z0-9]+\\s*(=)\\s*(\')'
     'beginCaptures':
@@ -153,6 +189,20 @@
             'name': 'constant.numeric.moose'
       }
     ]
+  'output_on':
+    'patterns': [
+      {
+        'match': '(?i)\\b(none|initial|linear|nonlinear|timestep_end|timestep_begin|final|failed|custom)\\b'
+        'name': 'constant.language.moose'
+      }
+    ]
+  'execute_on':
+    'patterns': [
+      {
+        'match': '(?i)\\b(linear|nonlinear|timestep_end|timestep_begin|custom)\\b'
+        'name': 'constant.language.moose'
+      }
+    ]
   'constants':
     'patterns': [
       {
@@ -174,7 +224,7 @@
         'name': 'keyword.operator.moose'
       }
       {
-        'match': 'abs|acos|acosh|arg|asin|atan|atan2|atanh|cbrt|ceil|conj|cos|cosh|cot|csc|exp|exp2|floor|hypot|if|imag|int|log|log10|log2|max|min|polar|pow|real|sec|sin|sinh|sqrt|tan|tanh|trunc'
+        'match': 'abs|acos|acosh|arg|asin|atan|atan2|atanh|cbrt|ceil|conj|cos|cosh|cot|csc|exp|exp2|floor|hypot|if|imag|int|log|log10|log2|max|min|polar|pow|real|sec|sin|sinh|sqrt|tan|tanh|trunc|plog'
         'name': 'support.function.moose'
       }
     ]
