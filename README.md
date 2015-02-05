@@ -9,7 +9,7 @@ Syntax highlighting for:
 * Valid sublevel blocks
 * Special highlight for the ```type = TypeName``` lines
 * Highlight valid Function Parser functions in parameter strings
-* Highlight valis parameters for shape function family/order and element type
+* Highlight valid parameters for shape function family/order and element type
 * Numbers and constrants (true/false)
 
 ## MOOSE
