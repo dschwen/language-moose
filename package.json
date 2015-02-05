@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "description": "MOOSE Framework input file support in Atom",
-  "homepage": "http://atom.github.io/language-moose",
+  "homepage": "https://atom.io/packages/language-moose",
   "repository": {
     "type": "git",
     "url": "https://github.com/dschwen/language-moose.git"
