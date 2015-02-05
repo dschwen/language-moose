@@ -2,6 +2,22 @@
   'editor':
     'commentStart': '# '
     'completions': [
+      'Mesh'
       'Kernels'
       'AuxKernels'
+      'ScalarKernels'
+      'AuxScalarKernels'
+      'Variables'
+      'AuxVariables'
+      'Materials'
+      'Postprocessors'
+      'BCs'
+      'ICs'
+      'Executioner'
+      'Outputs'
+      'Problem'
+      'Debug'
+      'Preconditioning'
+      'UserObjects'
+      'Functions'
     ]

@@ -23,7 +23,7 @@
         'name': 'keyword.operator.moose'
   }
   {
-    'match': '(\\[\\.\\/)(TimeStepper|Periodic)(\\])'
+    'match': '(\\[\\.\\/)(TimeStepper|Periodic|InitialCondition)(\\])'
     'captures':
       '1':
         'name': 'keyword.operator.moose'
@@ -145,24 +145,12 @@
     'end': '(?=\\s|$)'
     'name': 'meta.include.puppet'
   }
-  {
-    'match': '\\b\\w+\\s*(?==>)\\s*'
-    'name': 'constant.other.key.puppet'
-  }
-  {
-    'match': '(?<={)\\s*\\w+\\s*(?=})'
-    'name': 'constant.other.bareword.puppet'
-  }
-  {
-    'match': '(?i)\\b(alert|crit|debug|defined|emerg|err|escape|fail|failed|file|generate|gsub|include|info|notice|package|realize|search|tag|tagged|template|warning)\\b'
-    'name': 'support.function.puppet'
-  }
 ]
 'repository':
   'constants':
     'patterns': [
       {
-        'match': '(?i)\\b(false|true)\\b'
+        'match': '(?i)\\b(false|true|CONSTANT|FIRST|SECOND|THIRD|MONOMIAL|LAGRANGE|HERMITE)\\b'
         'name': 'constant.language.moose'
       }
     ]
