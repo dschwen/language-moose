@@ -171,13 +171,13 @@
             'name': 'constant.numeric.moose'
       }
       {
-        'match': '\\b(\\d+e-{0,1}\\d+)\\b'
+        'match': '\\b(\\d+e[+-]{0,1}\\d+)\\b'
         'captures':
           '1':
             'name': 'constant.numeric.moose'
       }
       {
-        'match': '\\b(\\d*\\.\\d+e-{0,1}\\d+)\\b'
+        'match': '\\b(\\d*\\.\\d+e[+-]{0,1}\\d+)\\b'
         'captures':
           '1':
             'name': 'constant.numeric.moose'
