@@ -158,6 +158,9 @@
       {
         'include': '#numbers'
       }
+      {
+        'include': '#comments'
+      }
     ]
   }
 ]
