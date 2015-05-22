@@ -7,9 +7,6 @@
 'name': 'MOOSE Input'
 'patterns': [
   {
-    'include': '#line_comment'
-  }
-  {
     'match': '(\\[)(Bounds|Mesh|MeshModifiers|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions|GlobalParams|VectorPostprocessors|Dampers|DiracKernels|DGKernels|Constraints|NodalNormals|CoupledProblems|DeprecatedBlock|MultiApps|Transfers)(\\])'
     'captures':
       '1':
@@ -160,6 +157,9 @@
       }
     ]
   }
+  {
+    'include': '#comments'
+  }
 ]
 'repository':
   'numbers':
@@ -237,22 +237,20 @@
             'name': 'variable.other.moose'
       }
     ]
-  'line_comment':
+  'comments':
     'patterns': [
       {
+        'match': '^\\s*((#).*$\\n?)'
         'captures':
           '1':
-            'name': 'comment.line.number-sign.moose'
-          '2':
             'name': 'punctuation.definition.comment.moose'
-        'match': '^((#).*$\\n?)'
-        'name': 'meta.comment.full-line.puppet'
+          '2':
+            'name': 'comment.line.number-sign.moose'
       }
       {
+        'match': '^.*((#).*$\\n?)'
         'captures':
           '1':
             'name': 'punctuation.definition.comment.moose'
-        'match': '(#).*$\\n?'
-        'name': 'comment.line.number-sign.puppet'
       }
     ]
