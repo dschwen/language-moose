@@ -1,13 +1,29 @@
 'scopeName': 'source.moosecpp'
 'name': 'MOOSE C++'
-'injectionSelector': 'source.c - (comment | string), source.cpp - (comment | string)'
+'injectionSelector': 'L:source.c - (comment | string), L:source.cpp - (comment | string)'
 'patterns': [
   {
-    'match': '\\b(Real|RealGradient)\\b'
+    # Add libmesh and MOOSE types
+    'match': '\\b(Real|RealGradient|RankTwoTensor|RankFourTensor|Point)\\b'
     'name': 'storage.type.c'
   }
   {
+    # highlight math operators that are surrounded by whitespace
     'match': ' [+\\-\\*/%] '
     'name': 'keyword.operator.moose'
+  }
+  {
+    # enforce space after , unless single digit indices or loop variables are used
+    'match': '(,)([^\\s0-9i-m]|[0-9i-m][^),])'
+    'captures':
+      '1':
+        'name': 'moose.error'
+  }
+  {
+    # not working yet - requires L: overrides to function
+    'match': '\\b(if|switch|for|while)(\\()'
+    'captures':
+      '2':
+        'name': 'moose.error'
   }
 ]

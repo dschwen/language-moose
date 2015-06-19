@@ -12,32 +12,24 @@
   {
     'match': '(\\[)(Bounds|Mesh|MeshModifiers|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions|GlobalParams|VectorPostprocessors|Dampers|DiracKernels|DGKernels|Constraints|NodalNormals|CoupledProblems|DeprecatedBlock|MultiApps|Transfers)(\\])'
     'captures':
-      '1':
-        'name': 'keyword.operator.moose'
       '2':
         'name': 'keyword.control.moose'
-      '3':
-        'name': 'keyword.operator.moose'
   }
   {
-    'match': '(\\[\\.\\/)(TimeStepper|TimePeriods|Quadrature|Predictor|Adaptivity|Indicators|Markers|Periodic|InitialCondition|MortarInterfaces)(\\])'
+    'match': '\\[(\\.\\/)(TimeStepper|TimePeriods|Quadrature|Predictor|Adaptivity|Indicators|Markers|Periodic|InitialCondition|MortarInterfaces)\\]'
     'captures':
       '1':
-        'name': 'keyword.operator.moose'
+        'name': 'moose'
       '2':
         'name': 'keyword.control.moose'
-      '3':
-        'name': 'keyword.operator.moose'
   }
   {
-    'match': '(\\[\\.*/*)(.*)(\\])'
+    'match': '\\[(\\.*/*)(.*)\\]'
     'captures':
       '1':
-        'name': 'keyword.operator.moose'
+        'name': 'moose'
       '2':
         'name': 'support.function.moose'
-      '3':
-        'name': 'keyword.operator.moose'
   }
   {
     'match': '\\b(type)\\s*(=)\\s*([^\\s]+)'
@@ -53,13 +45,13 @@
     'match': '\\[(\\.+/)\\]'
     'captures':
       '1':
-        'name': 'keyword.operator.moose'
+        'name': 'moose'
   }
   {
-    'match': '(\\[\\])'
+    'match': '\\[\\]'
     'captures':
       '1':
-        'name': 'keyword.operator.moose'
+        'name': 'moose'
   }
   {
     'match': '\\border\\s*(=)\\s*(CONSTANT|FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH)\\b'
