@@ -1,0 +1,13 @@
+'scopeName': 'source.moosecpp'
+'name': 'MOOSE C++'
+'injectionSelector': 'source.c, source.cpp'
+'patterns': [
+  {
+    'match': '\\b(Real|RealGradient)\\b'
+    'name': 'storage.type.c'
+  }
+  {
+    'match': ' [+\\-\\*/%] '
+    'name': 'keyword.operator.c'
+  }
+]
