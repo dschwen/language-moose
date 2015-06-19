@@ -1,6 +1,6 @@
 'scopeName': 'source.moosecpp'
 'name': 'MOOSE C++'
-'injectionSelector': 'source.c, source.cpp'
+'injectionSelector': 'source.c - (comment | string), source.cpp - (comment | string)'
 'patterns': [
   {
     'match': '\\b(Real|RealGradient)\\b'
@@ -8,6 +8,6 @@
   }
   {
     'match': ' [+\\-\\*/%] '
-    'name': 'keyword.operator.c'
+    'name': 'keyword.operator.moose'
   }
 ]
