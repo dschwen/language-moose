@@ -12,13 +12,13 @@
     'match': ' [+\\-\\*/%] '
     'name': 'keyword.operator.moose'
   }
-  {
-    # enforce space after , unless single digit indices or loop variables are used
-    'match': '(,)([^\\s0-9i-m]|[0-9i-m][^),])'
-    'captures':
-      '1':
-        'name': 'moose.error'
-  }
+  # {
+  #   # enforce space after , unless single digit indices or loop variables are used
+  #   'match': '(,)([^\\s0-9i-m]|[0-9i-m][^),])'
+  #   'captures':
+  #     '1':
+  #       'name': 'moose.error'
+  # }
   {
     # not working yet - requires L: overrides to function
     'match': '\\b(if|switch|for|while)(\\()'

@@ -194,7 +194,7 @@
   'execute_on':
     'patterns': [
       {
-        'match': '(?i)\\b(linear|nonlinear|timestep_end|timestep_begin|custom)\\b'
+        'match': '(?i)\\b(initial|linear|nonlinear|timestep_end|timestep_begin|final|custom)\\b'
         'name': 'constant.language.moose'
       }
     ]
