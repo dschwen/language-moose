@@ -1,5 +1,7 @@
+@import 'syntax-variables.less';
+
 atom-text-editor::shadow .keyword.operator.moose {
-  color: white;
+  color: contrast(@syntax-background-color, white, black);
   font-weight: bold;
 }
 
