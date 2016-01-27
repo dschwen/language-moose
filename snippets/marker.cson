@@ -1,7 +1,7 @@
 # Template for Marker
 
-'.source.c':
-  'MOOSE marker':
+'.source.c, .source.cpp':
+  'MOOSE marker header':
     'prefix': 'marker-h'
     'body': """
     #ifndef ${1}_H
@@ -29,8 +29,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE marker':
+  'MOOSE marker implementation':
     'prefix': 'marker-c'
     'body': """
     #include "${1}.h"

@@ -1,7 +1,7 @@
 # Template for TimeIntegrator
 
-'.source.c':
-  'MOOSE time integrator':
+'.source.c, .source.cpp':
+  'MOOSE time integrator header':
     'prefix': 'timeintegrator-h'
     'body': """
     #ifndef ${1}_H
@@ -29,8 +29,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE time integrator':
+  'MOOSE time integrator implementation':
     'prefix': 'timeintegrator-c'
     'body': """
     #include "${1}.h"

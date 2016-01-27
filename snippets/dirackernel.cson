@@ -1,7 +1,7 @@
 # Template for DiracKernel
 
-'.source.c':
-  'MOOSE Dirac kernel':
+'.source.c, .source.cpp':
+  'MOOSE Dirac kernel header':
     'prefix': 'dirac-h'
     'body': """
     #ifndef ${1}_H
@@ -30,8 +30,8 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE Dirac kernel':
+
+  'MOOSE Dirac kernel implementation':
     'prefix': 'dirac-c'
     'body': """
     #include "${1}.h"

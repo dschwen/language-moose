@@ -1,6 +1,6 @@
 # Template for AuxKernel
 
-'.source.c':
+'.source.c, .source.cpp':
   'MOOSE auxiliary kernel':
     'prefix': 'auxkernel-h'
     'body': """
@@ -30,8 +30,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE auxiliary kernel':
+  'MOOSE auxiliary kernel implementation':
     'prefix': 'auxkernel-c'
     'body': """
     #include "${1}.h"

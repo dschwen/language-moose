@@ -1,7 +1,7 @@
 # Template for vector postprocessors
 
-'.source.c':
-  'MOOSE vector postprocessor':
+'.source.c, .source.cpp':
+  'MOOSE vector postprocessor header':
     'prefix': 'vectorpps-h'
     'body': """
     #ifndef ${1}_H
@@ -31,8 +31,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE vector postprocessor':
+  'MOOSE vector postprocessor implementation':
     'prefix': 'vectorpps-c'
     'body': """
     #include "${1}.h"

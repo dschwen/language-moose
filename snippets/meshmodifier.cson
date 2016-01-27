@@ -1,7 +1,7 @@
 # Template for MeshModifier
 
-'.source.c':
-  'MOOSE mesh modifier':
+'.source.c, .source.cpp':
+  'MOOSE mesh modifier header':
     'prefix': 'meshmodifier-h'
     'body': """
     #ifndef ${1}_H
@@ -28,8 +28,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE mesh modifier':
+  'MOOSE mesh modifier implementation':
     'prefix': 'meshmodifier-c'
     'body': """
     #include "${1}.h"

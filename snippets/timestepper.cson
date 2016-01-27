@@ -1,7 +1,7 @@
 # Template for TimeStepper
 
-'.source.c':
-  'MOOSE time stepper':
+'.source.c, .source.cpp':
+  'MOOSE time stepper header':
     'prefix': 'timestepper-h'
     'body': """
     #ifndef ${1}_H
@@ -30,8 +30,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE time stepper':
+  'MOOSE time stepper implementation':
     'prefix': 'timestepper-c'
     'body': """
     #include "${1}.h"

@@ -1,7 +1,7 @@
 # Template for user objects
 
-'.source.c':
-  'MOOSE user object':
+'.source.c, .source.cpp':
+  'MOOSE user object header':
     'prefix': 'uo-h'
     'body': """
     #ifndef ${1}_H
@@ -31,8 +31,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE user object':
+  'MOOSE user object implementation':
     'prefix': 'uo-c'
     'body': """
     #include "${1}.h"

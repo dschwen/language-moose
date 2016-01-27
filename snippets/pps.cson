@@ -1,7 +1,7 @@
 # Template for postprocessors
 
-'.source.c':
-  'MOOSE postprocessor':
+'.source.c, .source.cpp':
+  'MOOSE postprocessor header':
     'prefix': 'pps-h'
     'body': """
     #ifndef ${1}_H
@@ -32,8 +32,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE postprocessor':
+  'MOOSE postprocessor implementation':
     'prefix': 'pps-c'
     'body': """
     #include "${1}.h"

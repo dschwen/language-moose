@@ -1,7 +1,7 @@
 # Template for BoundaryConditions
 
-'.source.c':
-  'MOOSE nodal boundary condition':
+'.source.c, .source.cpp':
+  'MOOSE nodal boundary condition header':
     'prefix': 'nodalbc-h'
     'body': """
     #ifndef ${1}_H
@@ -30,7 +30,7 @@
     #endif // ${1}_H
     """
 
-  'MOOSE integrated boundary condition':
+  'MOOSE integrated boundary condition header':
     'prefix': 'integratedbc-h'
     'body': """
     #ifndef ${1}_H
@@ -59,8 +59,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE nodal boundary condition':
+  'MOOSE nodal boundary condition implementation':
     'prefix': 'nodalbc-c'
     'body': """
     #include "${1}.h"
@@ -82,7 +81,7 @@
     }
     """
 
-  'MOOSE integrated boundary condition':
+  'MOOSE integrated boundary condition implementation':
     'prefix': 'integratedbc-c'
     'body': """
     #include "${1}.h"

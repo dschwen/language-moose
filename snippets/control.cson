@@ -1,7 +1,7 @@
 # Template for Control
 
-'.source.c':
-  'MOOSE control':
+'.source.c, .source.cpp':
+  'MOOSE control header':
     'prefix': 'control-h'
     'body': """
     #ifndef ${1}_H
@@ -28,8 +28,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE constrol':
+  'MOOSE constrol implementation':
     'prefix': 'control-c'
     'body': """
     #include "${1}.h"

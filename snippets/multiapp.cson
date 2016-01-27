@@ -1,7 +1,7 @@
 # Template for MultiApp
 
-'.source.c':
-  'MOOSE multi-app':
+'.source.c, .source.cpp':
+  'MOOSE multi-app header':
     'prefix': 'multiapp-h'
     'body': """
     #ifndef ${1}_H
@@ -29,8 +29,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE multi-app':
+  'MOOSE multi-app implementation':
     'prefix': 'multiapp-c'
     'body': """
     #include "${1}.h"

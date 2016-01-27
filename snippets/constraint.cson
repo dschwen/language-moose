@@ -1,13 +1,12 @@
 # Template for Constraint
 
-'.source.c':
-  'MOOSE constraint':
+'.source.c, .source.cpp':
+  'MOOSE constraint header':
     'prefix': 'constraint-h'
     'body': """
     """
 
-'.source.cpp':
-  'MOOSE constraint':
+  'MOOSE constraint implementation':
     'prefix': 'constraint-c'
     'body': """
     """

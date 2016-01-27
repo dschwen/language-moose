@@ -1,7 +1,7 @@
 # Template for NodalKernel
 
-'.source.c':
-  'MOOSE nodal kernel':
+'.source.c, .source.cpp':
+  'MOOSE nodal kernel header':
     'prefix': 'nodalkernel-h'
     'body': """
     #ifndef ${1}_H
@@ -29,8 +29,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE nodal kernel':
+  'MOOSE nodal kernel implementation':
     'prefix': 'nodalkernel-c'
     'body': """
     #include "${1}.h"

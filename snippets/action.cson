@@ -1,6 +1,6 @@
 # Template for Action
 
-'.source.c':
+'.source.c, .source.cpp':
   'MOOSE action':
     'prefix': 'action-h'
     'body': """
@@ -28,8 +28,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE action':
+  'MOOSE action implementation':
     'prefix': 'action-c'
     'body': """
     #include "${1}.h"

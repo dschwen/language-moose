@@ -1,7 +1,7 @@
 # Template for Damper
 
-'.source.c':
-  'MOOSE damper':
+'.source.c, .source.cpp':
+  'MOOSE damper header':
     'prefix': 'damper-h'
     'body': """
     #ifndef ${1}_H
@@ -29,8 +29,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE damper':
+  'MOOSE damper implementation':
     'prefix': 'damper-c'
     'body': """
     #include "${1}.h"

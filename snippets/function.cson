@@ -1,7 +1,7 @@
 # Template for Function
 
-'.source.c':
-  'MOOSE function':
+'.source.c, .source.cpp':
+  'MOOSE function header':
     'prefix': 'function-h'
     'body': """
     #ifndef ${1}_H
@@ -28,8 +28,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE function':
+  'MOOSE function implementation':
     'prefix': 'function-c'
     'body': """
     #include "${1}.h"

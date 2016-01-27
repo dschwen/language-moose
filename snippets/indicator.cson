@@ -1,7 +1,7 @@
 # Template for Indicator
 
-'.source.c':
-  'MOOSE indicator':
+'.source.c, .source.cpp':
+  'MOOSE indicator header':
     'prefix': 'indicator-h'
     'body': """
     #ifndef ${1}_H
@@ -28,8 +28,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE indicator':
+  'MOOSE indicator implementation':
     'prefix': 'indicator-c'
     'body': """
     #include "${1}.h"

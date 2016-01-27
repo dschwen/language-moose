@@ -1,7 +1,7 @@
 # Template for Material
 
-'.source.c':
-  'MOOSE material':
+'.source.c, .source.cpp':
+  'MOOSE material header':
     'prefix': 'material-h'
     'body': """
     #ifndef ${1}_H
@@ -29,8 +29,7 @@
     #endif // ${1}_H
     """
 
-'.source.cpp':
-  'MOOSE material':
+  'MOOSE material implementation':
     'prefix': 'material-c'
     'body': """
     #include "${1}.h"
