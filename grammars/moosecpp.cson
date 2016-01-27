@@ -4,7 +4,7 @@
 'patterns': [
   {
     # Add libmesh and MOOSE types
-    'match': '\\b(Real|RealGradient|RankTwoTensor|RankFourTensor|Point)\\b'
+    'match': '\\b(Real|RealGradient|RankTwoTensor|RankFourTensor|RealVectorValue|Point)\\b'
     'name': 'storage.type.c'
   }
   {
