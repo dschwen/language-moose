@@ -1,0 +1,52 @@
+# Template for Function
+
+'.source.c':
+  'MOOSE function':
+    'prefix': 'function-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Function.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Function
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+      virtual Real value(Real t, const Point & p);
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE function':
+    'prefix': 'function-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Function>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Function(parameters)
+    {
+    }
+
+    Real
+    ${1}::value(Real t, const Point & p);
+    {
+    }
+    """

@@ -1,0 +1,53 @@
+# Template for Marker
+
+'.source.c':
+  'MOOSE marker':
+    'prefix': 'marker-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Marker.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Marker
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual MarkerValue computeElementMarker();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE marker':
+    'prefix': 'marker-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Marker>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Marker(parameters)
+    {
+    }
+
+    MarkerValue
+    ${1}::computeElementMarker();
+    {
+    }
+    """

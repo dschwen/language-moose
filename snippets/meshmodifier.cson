@@ -1,0 +1,52 @@
+# Template for MeshModifier
+
+'.source.c':
+  'MOOSE mesh modifier':
+    'prefix': 'meshmodifier-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "MeshModifier.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public MeshModifier
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+      virtual void modify();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE mesh modifier':
+    'prefix': 'meshmodifier-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<MeshModifier>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : MeshModifier(parameters)
+    {
+    }
+
+    void
+    ${1}::modify();
+    {
+    }
+    """

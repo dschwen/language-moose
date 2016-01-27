@@ -1,0 +1,59 @@
+# Template for TimeStepper
+
+'.source.c':
+  'MOOSE time stepper':
+    'prefix': 'timestepper-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "InitialCondition.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public InitialCondition
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeInitialDT();
+      virtual Real computeDT();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE time stepper':
+    'prefix': 'timestepper-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<InitialCondition>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : InitialCondition(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeInitialDT()
+    {
+    }
+
+    Real
+    ${1}::computeDT()
+    {
+    }
+    """

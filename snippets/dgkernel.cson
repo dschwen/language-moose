@@ -1,0 +1,59 @@
+# Template for DGKernel
+
+'.source.c':
+  'MOOSE DG kernel':
+    'prefix': 'dgkernel-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "DGKernel.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public DGKernel
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual(Moose::DGResidualType type);
+      virtual Real computeQpJacobian(Moose::DGJacobianType type);
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE DG kernel':
+    'prefix': 'dgkernel-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<DGKernel>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : DGKernel(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual()
+    {
+    }
+
+    Real
+    ${1}::computeQpJacobian()
+    {
+    }
+    """
