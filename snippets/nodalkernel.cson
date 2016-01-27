@@ -1,0 +1,53 @@
+# Template for NodalKernel
+
+'.source.c':
+  'MOOSE nodal kernel':
+    'prefix': 'nodalkernel-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "NodalKernel.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public NodalKernel
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE nodal kernel':
+    'prefix': 'nodalkernel-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<NodalKernel>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : NodalKernel(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual();
+    {
+    }
+    """

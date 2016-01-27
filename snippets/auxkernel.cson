@@ -1,0 +1,55 @@
+# Template for AuxKernel
+
+'.source.c':
+  'MOOSE auxiliary kernel':
+    'prefix': 'auxkernel-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "AuxKernel.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public AuxKernel
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeValue();
+
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE auxiliary kernel':
+    'prefix': 'auxkernel-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<AuxKernel>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : AuxKernel(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeValue()
+    {
+      return 0;
+    }
+    """

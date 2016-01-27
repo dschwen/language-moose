@@ -1,0 +1,52 @@
+# Template for Action
+
+'.source.c':
+  'MOOSE action':
+    'prefix': 'action-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Action.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Action
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+      virtual void act();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE action':
+    'prefix': 'action-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Action>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Action(parameters)
+    {
+    }
+
+    void
+    ${1}::act()
+    {
+    }
+    """

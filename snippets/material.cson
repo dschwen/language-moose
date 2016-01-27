@@ -1,0 +1,53 @@
+# Template for Material
+
+'.source.c':
+  'MOOSE material':
+    'prefix': 'material-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Material.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Material
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual void computeQpProperties();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE material':
+    'prefix': 'material-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Material>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Material(parameters)
+    {
+    }
+
+    void
+    ${1}::computeQpProperties();
+    {
+    }
+    """

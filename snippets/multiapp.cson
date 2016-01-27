@@ -1,0 +1,58 @@
+# Template for MultiApp
+
+'.source.c':
+  'MOOSE multi-app':
+    'prefix': 'multiapp-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "MultiApp.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public MultiApp
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+      virtual bool solveStep(Real dt, Real target_time, bool auto_advance = true);
+      virtual void advanceStep();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE multi-app':
+    'prefix': 'multiapp-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<MultiApp>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : MultiApp(parameters)
+    {
+    }
+
+    bool
+    ${1}::solveStep(Real dt, Real target_time, bool auto_advance/* = true*/)
+    {
+    }
+
+    void
+    ${1}::advanceStep()
+    {
+    }
+    """

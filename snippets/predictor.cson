@@ -1,0 +1,52 @@
+# Template for Predictor
+
+'.source.c':
+  'MOOSE predictor':
+    'prefix': 'predictor-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Predictor.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Predictor
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+      virtual void apply(NumericVector<Number> & sln);
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE predictor':
+    'prefix': 'predictor-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Predictor>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Predictor(parameters)
+    {
+    }
+
+    void
+    ${1}::apply(NumericVector<Number> & sln);
+    {
+    }
+    """

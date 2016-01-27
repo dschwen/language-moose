@@ -1,0 +1,52 @@
+# Template for Transfer
+
+'.source.c':
+  'MOOSE transfer':
+    'prefix': 'transfer-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Transfer.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Transfer
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+      virtual void execute();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE transfer':
+    'prefix': 'transfer-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Transfer>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Transfer(parameters)
+    {
+    }
+
+    void
+    ${1}::execute();
+    {
+    }
+    """

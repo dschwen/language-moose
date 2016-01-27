@@ -1,0 +1,60 @@
+# Template for Kernel
+
+'.source.c':
+  'MOOSE kernel':
+    'prefix': 'kernel-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Kernel.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Kernel
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual();
+      virtual Real computeQpJacobian();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE kernel':
+    'prefix': 'kernel-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Kernel>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Kernel(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual();
+    {
+    }
+
+    Real
+    ${1}::computeQpJacobian();
+    {
+      return 0;
+    }
+    """

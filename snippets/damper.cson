@@ -1,0 +1,53 @@
+# Template for Damper
+
+'.source.c':
+  'MOOSE damper':
+    'prefix': 'damper-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "Damper.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public Damper
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpDamping();
+    };
+
+    #endif // ${1}_H
+    """
+
+'.source.cpp':
+  'MOOSE damper':
+    'prefix': 'damper-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<Damper>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) : Damper(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpDamping()
+    {
+    }
+    """
