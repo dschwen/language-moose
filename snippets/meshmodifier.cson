@@ -40,12 +40,13 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : MeshModifier(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        MeshModifier(parameters)
     {
     }
 
     void
-    ${1}::modify();
+    ${1}::modify()
     {
     }
     """

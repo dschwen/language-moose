@@ -24,7 +24,6 @@
 
     protected:
       virtual Real computeQpResidual();
-
     };
 
     #endif // ${1}_H
@@ -71,7 +70,8 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : NodalBC(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        NodalBC(parameters)
     {
     }
 
@@ -93,7 +93,8 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : IntegratedBC(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        IntegratedBC(parameters)
     {
     }
 
@@ -105,6 +106,6 @@
     Real
     ${1}::computeQpJacobian()
     {
-      return 0;
+      return 0.0;
     }
     """

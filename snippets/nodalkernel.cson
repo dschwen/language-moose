@@ -41,12 +41,13 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : NodalKernel(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        NodalKernel(parameters)
     {
     }
 
     Real
-    ${1}::computeQpResidual();
+    ${1}::computeQpResidual()
     {
     }
     """

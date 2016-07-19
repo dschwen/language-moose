@@ -40,12 +40,13 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : Indicator(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        Indicator(parameters)
     {
     }
 
     void
-    ${1}::computeIndicator();
+    ${1}::computeIndicator()
     {
     }
     """

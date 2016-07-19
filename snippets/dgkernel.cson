@@ -42,7 +42,8 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : DGKernel(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        DGKernel(parameters)
     {
     }
 

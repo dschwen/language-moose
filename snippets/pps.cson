@@ -44,7 +44,8 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : ${2}(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        ${2}(parameters)
     {
     }
 
@@ -64,7 +65,7 @@
     }
 
     PostprocessorValue
-    ${1}::getValue();
+    ${1}::getValue()
     {
     }
 

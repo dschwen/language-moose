@@ -25,7 +25,7 @@
       virtual void execute();
     };
 
-    #endif // ${1}_H
+    #endif //${1}_H
     """
 
   'MOOSE transfer implementation':
@@ -40,12 +40,13 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : Transfer(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        Transfer(parameters)
     {
     }
 
     void
-    ${1}::execute();
+    ${1}::execute()
     {
     }
     """

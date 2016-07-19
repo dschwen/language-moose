@@ -41,12 +41,13 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : Marker(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        Marker(parameters)
     {
     }
 
     MarkerValue
-    ${1}::computeElementMarker();
+    ${1}::computeElementMarker()
     {
     }
     """

@@ -24,7 +24,6 @@
 
     protected:
       virtual Real computeValue();
-
     };
 
     #endif // ${1}_H
@@ -42,13 +41,14 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : AuxKernel(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        AuxKernel(parameters)
     {
     }
 
     Real
     ${1}::computeValue()
     {
-      return 0;
+      return 0.0;
     }
     """

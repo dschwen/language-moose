@@ -43,7 +43,8 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : DiracKernel(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        DiracKernel(parameters)
     {
     }
 

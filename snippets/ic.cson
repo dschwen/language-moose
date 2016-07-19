@@ -40,12 +40,13 @@
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) : InitialCondition(parameters)
+    ${1}::${1}(const InputParameters & parameters) :
+        InitialCondition(parameters)
     {
     }
 
     Real
-    ${1}::value(const Point & p);
+    ${1}::value(const Point & p)
     {
     }
     """
