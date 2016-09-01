@@ -46,7 +46,7 @@
     {
     }
 
-    MarkerValue
+    Marker::MarkerValue
     ${1}::computeElementMarker()
     {
     }
