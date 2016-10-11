@@ -1,0 +1,67 @@
+# Template for MooseMesh
+
+'.source.c, .source.cpp':
+  'MOOSE mesh header':
+    'prefix': 'mesh-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "MooseMesh.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public MooseMesh
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+      ${2}(const ${2} & other_mesh) = default;
+
+      // No copy
+      ${2} & operator=(const ${2} & other_mesh) = delete;
+
+      virtual MooseMesh & clone() const override;
+
+      virtual void buildMesh() override;
+    };
+
+    #endif // ${1}_H
+    """
+
+  'MOOSE mesh implementation':
+    'prefix': 'mesh-c'
+    'body': """
+    #include "${1}.h"
+
+    // libMesh includes
+    #include "libmesh/mesh_generation.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<MooseMesh>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) :
+        MooseMesh(parameters)
+    {
+    }
+
+    MooseMesh &
+    ${1}::clone() const
+    {
+      return *(new ${1}(*this));
+    }
+
+    void
+    ${1}::buildMesh()
+    {
+    }
+    """
