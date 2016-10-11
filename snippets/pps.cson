@@ -22,11 +22,13 @@
     public:
       ${2}(const InputParameters & parameters);
 
-      virtual void initialize();
-      virtual void execute();
-      virtual void finalize();
-      virtual PostprocessorValue getValue();
-      virtual void threadJoin(const UserObject & uo);
+      virtual void initialize() override;
+      virtual void execute() override;
+      virtual void finalize() override;
+      virtual PostprocessorValue getValue() override;
+
+      // only needed for ElementPostprocessors and NodalPostprocessors
+      virtual void threadJoin(const UserObject & y) override;
     };
 
     #endif // ${1}_H
@@ -70,7 +72,8 @@
     }
 
     void
-    ${1}::threadJoin(const UserObject & uo)
+    ${1}::threadJoin(const UserObject & y)
     {
+      const ${1} & pp = static_cast<const ${1} &>(y);
     }
     """

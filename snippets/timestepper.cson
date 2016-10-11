@@ -23,8 +23,8 @@
       ${2}(const InputParameters & parameters);
 
     protected:
-      virtual Real computeInitialDT();
-      virtual Real computeDT();
+      virtual Real computeInitialDT() override;
+      virtual Real computeDT() override;
     };
 
     #endif //${1}_H

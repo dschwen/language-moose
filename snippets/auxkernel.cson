@@ -23,7 +23,7 @@
       ${2}(const InputParameters & parameters);
 
     protected:
-      virtual Real computeValue();
+      virtual Real computeValue() override;
     };
 
     #endif // ${1}_H

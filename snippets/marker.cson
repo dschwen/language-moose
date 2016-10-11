@@ -23,7 +23,7 @@
       ${2}(const InputParameters & parameters);
 
     protected:
-      virtual MarkerValue computeElementMarker();
+      virtual MarkerValue computeElementMarker() override;
     };
 
     #endif // ${1}_H

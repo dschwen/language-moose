@@ -22,7 +22,7 @@
     public:
       ${2}(const InputParameters & parameters);
 
-      virtual void modify();
+      virtual void modify() override;
     };
 
     #endif // ${1}_H

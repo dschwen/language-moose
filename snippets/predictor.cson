@@ -22,7 +22,7 @@
     public:
       ${2}(const InputParameters & parameters);
 
-      virtual void apply(NumericVector<Number> & sln);
+      virtual void apply(NumericVector<Number> & sln) override;
     };
 
     #endif // ${1}_H

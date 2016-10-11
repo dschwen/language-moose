@@ -23,7 +23,7 @@
       ${2}(const InputParameters & parameters);
 
     protected:
-      virtual Real computeQpDamping();
+      virtual Real computeQpDamping() override;
     };
 
     #endif // ${1}_H

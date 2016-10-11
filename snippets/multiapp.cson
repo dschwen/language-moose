@@ -22,8 +22,8 @@
     public:
       ${2}(const InputParameters & parameters);
 
-      virtual bool solveStep(Real dt, Real target_time, bool auto_advance = true);
-      virtual void advanceStep();
+      virtual bool solveStep(Real dt, Real target_time, bool auto_advance = true) override;
+      virtual void advanceStep() override;
     };
 
     #endif // ${1}_H

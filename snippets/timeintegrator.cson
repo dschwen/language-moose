@@ -22,8 +22,8 @@
     public:
       ${2}(const InputParameters & parameters);
 
-      virtual int order();
-      virtual void computeTimeDerivatives();
+      virtual int order() override;
+      virtual void computeTimeDerivatives() override;
     };
 
     #endif //${1}_H
