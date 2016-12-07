@@ -219,8 +219,10 @@
         'name': 'keyword.operator.moose'
       }
       {
-        'match': 'abs|acos|acosh|arg|asin|atan|atan2|atanh|cbrt|ceil|conj|cos|cosh|cot|csc|exp|exp2|floor|hypot|if|imag|int|log|log10|log2|max|min|polar|pow|real|sec|sin|sinh|sqrt|tan|tanh|trunc|plog'
-        'name': 'support.function.moose'
+        'match': '(abs|acos|acosh|arg|asin|atan|atan2|atanh|cbrt|ceil|conj|cos|cosh|cot|csc|exp|exp2|floor|hypot|if|imag|int|log|log10|log2|max|min|polar|pow|real|sec|sin|sinh|sqrt|tan|tanh|trunc|plog)\\\('
+        'captures':
+          '1':
+            'name': 'support.function.moose'
       }
     ]
   'fparser_variables':
