@@ -1,0 +1,83 @@
+# Template for InterfaceKernel
+
+'.source.c, .source.cpp':
+  'MOOSE interfacekernel header':
+    'prefix': 'interfacekernel-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "InterfaceKernel.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public InterfaceKernel
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual(Moose::DGResidualType type) override;
+      virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
+    };
+
+    #endif // ${1}_H
+    """
+
+  'MOOSE interfacekernel implementation':
+    'prefix': 'interfacekernel-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<InterfaceKernel>();
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters) :
+        InterfaceKernel(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual(Moose::DGResidualType type)
+    {
+      switch (type)
+      {
+        case Moose::Element:
+          return 0.0 * _test[_i][_qp];
+          break;
+
+        case Moose::Neighbor:
+          return 0.0 * _test_neighbor[_i][_qp];
+          break;
+      }
+    }
+
+    Real
+    ${1}::computeQpJacobian(Moose::DGJacobianType type)
+    {
+      switch (type)
+      {
+        case Moose::ElementElement:
+          return 0.0 * _test[_i][_qp];
+
+        case Moose::NeighborNeighbor:
+          return 0.0 * _test_neighbor[_i][_qp];
+
+        case Moose::NeighborElement:
+          return 0.0 * _test_neighbor[_i][_qp];
+
+        case Moose::ElementNeighbor:
+          return 0.0 * _test[_i][_qp];
+      }
+    }
+    """
