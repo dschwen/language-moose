@@ -54,11 +54,9 @@
       {
         case Moose::Element:
           return 0.0 * _test[_i][_qp];
-          break;
 
         case Moose::Neighbor:
           return 0.0 * _test_neighbor[_i][_qp];
-          break;
       }
     }
 
