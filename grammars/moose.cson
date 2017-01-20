@@ -10,7 +10,7 @@
     'include': '#comments'
   }
   {
-    'match': '(\\[)(Bounds|Mesh|MeshModifiers|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions|GlobalParams|VectorPostprocessors|Dampers|DiracKernels|DGKernels|Constraints|NodalNormals|CoupledProblems|DeprecatedBlock|MultiApps|Transfers|InterfaceKernels|NodalKernels|Controls|Modules)(\\])'
+    'match': '(\\[)(Adaptivity|Bounds|Mesh|MeshModifiers|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions|GlobalParams|VectorPostprocessors|Dampers|DiracKernels|DGKernels|Constraints|NodalNormals|CoupledProblems|DeprecatedBlock|MultiApps|Transfers|InterfaceKernels|NodalKernels|Controls|Modules)(\\])'
     'captures':
       '2':
         'name': 'keyword.control.moose'
