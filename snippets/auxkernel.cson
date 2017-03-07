@@ -38,11 +38,12 @@
     InputParameters validParams<${1}>()
     {
       InputParameters params = validParams<AuxKernel>();
+      params.addClassDescription("");
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) :
-        AuxKernel(parameters)
+    ${1}::${1}(const InputParameters & parameters)
+      : AuxKernel(parameters)
     {
     }
 

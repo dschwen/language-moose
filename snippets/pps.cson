@@ -43,11 +43,12 @@
     InputParameters validParams<${1}>()
     {
       InputParameters params = validParams<${2}>();
+      params.addClassDescription("");
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) :
-        ${2}(parameters)
+    ${1}::${1}(const InputParameters & parameters)
+      : ${2}(parameters)
     {
     }
 

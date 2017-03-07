@@ -37,11 +37,12 @@
     InputParameters validParams<${1}>()
     {
       InputParameters params = validParams<Transfer>();
+      params.addClassDescription("");
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) :
-        Transfer(parameters)
+    ${1}::${1}(const InputParameters & parameters)
+      : Transfer(parameters)
     {
     }
 

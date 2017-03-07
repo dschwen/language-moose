@@ -39,11 +39,12 @@
     InputParameters validParams<${1}>()
     {
       InputParameters params = validParams<Kernel>();
+      params.addClassDescription("");
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) :
-        Kernel(parameters)
+    ${1}::${1}(const InputParameters & parameters)
+      : Kernel(parameters)
     {
     }
 

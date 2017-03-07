@@ -39,11 +39,12 @@
     InputParameters validParams<${1}>()
     {
       InputParameters params = validParams<InterfaceKernel>();
+      params.addClassDescription("");
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) :
-        InterfaceKernel(parameters)
+    ${1}::${1}(const InputParameters & parameters)
+      : InterfaceKernel(parameters)
     {
     }
 

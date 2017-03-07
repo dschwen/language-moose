@@ -40,11 +40,12 @@
     InputParameters validParams<${1}>()
     {
       InputParameters params = validParams<DiracKernel>();
+      params.addClassDescription("");
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) :
-        DiracKernel(parameters)
+    ${1}::${1}(const InputParameters & parameters)
+      : DiracKernel(parameters)
     {
     }
 
