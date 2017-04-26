@@ -1,12 +1,336 @@
 # Template for Constraint
 
 '.source.c, .source.cpp':
-  'MOOSE constraint header':
-    'prefix': 'constraint-h'
+  'MOOSE nodal constraint header':
+    'prefix': 'nodalconstraint-h'
     'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "NodalConstraint.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public NodalConstraint
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual(Moose::ConstraintType type) override;
+      virtual Real computeQpJacobian(Moose::ConstraintJacobianType type) override;
+    };
+
+    #endif // ${1}_H
     """
 
-  'MOOSE constraint implementation':
-    'prefix': 'constraint-c'
+  'MOOSE nodeface constraint header':
+    'prefix': 'nodefaceconstraint-h'
     'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "NodeFaceConstraint.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public NodeFaceConstraint
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpSlaveValue() override;
+      virtual Real computeQpResidual(Moose::ConstraintType type) override;
+      virtual Real computeQpJacobian(Moose::ConstraintJacobianType type) override
+    };
+
+    #endif // ${1}_H
+    """
+
+  'MOOSE faceface constraint header':
+    'prefix': 'facefaceconstraint-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "FaceFaceConstraint.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public FaceFaceConstraint
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual() override;
+      virtual Real computeQpResidualSide(Moose::ConstraintType res_type) override;
+      virtual Real computeQpJacobianSide(Moose::ConstraintJacobianType jac_type) override;
+    };
+
+    #endif // ${1}_H
+    """
+
+  'MOOSE elemelem constraint header':
+    'prefix': 'elemelemconstraint-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "ElemElemConstraint.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public ElemElemConstraint
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual(Moose::DGResidualType type) override;
+      virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
+    };
+
+    #endif // ${1}_H
+    """
+
+  'MOOSE nodal constraint implementation':
+    'prefix': 'nodalconstraint-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<NodalConstraint>();
+      params.addClassDescription("");
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters)
+      : NodalConstraint(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual(Moose::ConstraintType type)
+    {
+      switch (type)
+      {
+        case Moose::Slave:
+          return 0.0;
+        case Moose::Master:
+          return 0.0;
+        default:
+          return 0.0;
+      }
+    }
+
+    Real
+    ${1}::computeQpJacobian(Moose::ConstraintJacobianType type)
+    {
+      switch (type)
+      {
+        case Moose::MasterMaster:
+          return 0.0;
+        case Moose::SlaveMaster:
+          return 0.0;
+        case Moose::MasterSlave:
+          return 0.0;
+        case Moose::SlaveSlave:
+          return 0.0;
+        default:
+          return 0.0;
+      }
+    }
+    """
+
+  'MOOSE nodeface constraint implementation':
+    'prefix': 'nodefaceconstraint-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<NodeFaceConstraint>();
+      params.addClassDescription("");
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters)
+      : NodeFaceConstraint(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpSlaveValue()
+    {
+      return 0.0;
+    }
+
+    Real
+    ${1}::computeQpResidual(Moose::ConstraintType type)
+    {
+      switch (type)
+      {
+        case Moose::Slave:
+          return 0.0 * _test_slave[_i][_qp];
+        case Moose::Master:
+          return 0.0 * _test_master[_i][_qp];
+        default:
+          return 0.0;
+      }
+    }
+
+    Real
+    ${1}::computeQpJacobian(Moose::ConstraintJacobianType type)
+    {
+      switch (type)
+      {
+        case Moose::MasterMaster:
+          return 0.0;
+        case Moose::SlaveMaster:
+          return 0.0;
+        case Moose::MasterSlave:
+          return 0.0;
+        case Moose::SlaveSlave:
+          return 0.0;
+        default:
+          return 0.0;
+      }
+    }
+    """
+
+  'MOOSE faceface constraint implementation':
+    'prefix': 'facefaceconstraint-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<FaceFaceConstraint>();
+      params.addClassDescription("");
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters)
+      : FaceFaceConstraint(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual()
+    {
+      return 0.0 * _test[_i][_qp];
+    }
+
+    Real
+    ${1}::computeQpResidualSide(Moose::ConstraintType res_type)
+    {
+      switch (res_type)
+      {
+        case Moose::Master:
+          return 0.0 * _test_master[_i][_qp];
+        case Moose::Slave:
+          return 0.0 * _test_slave[_i][_qp];
+        default:
+          return 0.0;
+      }
+    }
+
+    Real
+    ${1}::computeQpJacobianSide(Moose::ConstraintJacobianType jac_type)
+    {
+      switch (type)
+      {
+        case Moose::MasterMaster:
+          return 0.0 * _phi[_j][_qp] * _test_master[_i][_qp];
+        case Moose::SlaveMaster:
+          return 0.0 * _phi[_j][_qp] * _test_master[_i][_qp];
+        case Moose::MasterSlave:
+          return 0.0 * _phi[_j][_qp] * _test_slave[_i][_qp];
+        case Moose::SlaveSlave:
+          return 0.0 * _phi[_j][_qp] * _test_slave[_i][_qp];
+        default:
+          return 0.0;
+      }
+    }
+    """
+
+  'MOOSE elemelem constraint implementation':
+    'prefix': 'elemelemconstraint-c'
+    'body': """
+    #include "${1}.h"
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<ElemElemConstraint>();
+      params.addClassDescription("");
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters)
+      : ElemElemonstraint(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual(Moose::DGResidualType type)
+    {
+      switch (type)
+      {
+        case Moose::Element:
+          return 0.0 * _test[_i][_qp];
+        case Moose::Neighbor:
+          return 0.0 * _test_neighbor[_i][_qp];
+        default:
+          return 0.0;
+      }
+    }
+
+    Real
+    ${1}::computeQpJacobian(Moose::DGJacobianType type)
+    {
+      switch (type)
+      {
+        case Moose::ElementElement:
+          return 0.0 * _phi[_j][_qp] * _test[_i][_qp];
+        case Moose::ElementNeighbor:
+          return 0.0 * _phi_neighbor[_j][_qp] * _test[_i][_qp];
+        case Moose::NeighborElement:
+          return 0.0 * _phi[_j][_qp] * _test_neighbor[_i][_qp];
+        case Moose::NeighborNeighbor:
+          return 0.0 * _phi_neighbor[_j][_qp] * _test_neighbor[_i][_qp];
+        default:
+          return 0.0;
+      }
+    }
     """
