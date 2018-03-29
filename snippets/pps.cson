@@ -39,6 +39,8 @@
     'body': """
     #include "${1}.h"
 
+    registerMooseObject("${3}", ${1});
+
     template<>
     InputParameters validParams<${1}>()
     {

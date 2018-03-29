@@ -42,6 +42,8 @@
     // libMesh includes
     #include "libmesh/mesh_generation.h"
 
+    registerMooseObject("${2}", ${1});
+
     template<>
     InputParameters validParams<${1}>()
     {

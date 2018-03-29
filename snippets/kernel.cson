@@ -35,6 +35,8 @@
     'body': """
     #include "${1}.h"
 
+    registerMooseObject("${2}", ${1});
+
     template<>
     InputParameters validParams<${1}>()
     {
@@ -45,6 +47,67 @@
 
     ${1}::${1}(const InputParameters & parameters)
       : Kernel(parameters)
+    {
+    }
+
+    Real
+    ${1}::computeQpResidual()
+    {
+    }
+
+    Real
+    ${1}::computeQpJacobian()
+    {
+      return 0;
+    }
+    """
+
+  'MOOSE vectorkernel header':
+    'prefix': 'vectorkernel-h'
+    'body': """
+    #ifndef ${1}_H
+    #define ${1}_H
+
+    #include "VectorKernel.h"
+
+    class ${2};
+
+    template<>
+    InputParameters validParams<${2}>();
+
+    /**
+     *
+     */
+    class ${2} : public VectorKernel
+    {
+    public:
+      ${2}(const InputParameters & parameters);
+
+    protected:
+      virtual Real computeQpResidual() override;
+      virtual Real computeQpJacobian() override;
+    };
+
+    #endif // ${1}_H
+    """
+
+  'MOOSE vectorkernel implementation':
+    'prefix': 'vectorkernel-c'
+    'body': """
+    #include "${1}.h"
+
+    registerMooseObject("${2}", ${1});
+
+    template<>
+    InputParameters validParams<${1}>()
+    {
+      InputParameters params = validParams<VectorKernel>();
+      params.addClassDescription("");
+      return params;
+    }
+
+    ${1}::${1}(const InputParameters & parameters)
+      : VectorKernel(parameters)
     {
     }
 
