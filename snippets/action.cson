@@ -33,6 +33,8 @@
     'body': """
     #include "${1}.h"
 
+    registerMooseAction("${2}", ${1}, "${3}");
+
     template<>
     InputParameters validParams<${1}>()
     {
