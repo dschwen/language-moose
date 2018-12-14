@@ -11,8 +11,9 @@
 
     class ${2};
 
-    template<>
-    InputParameters validParams<${2}>();
+    template <>
+    InputParameters
+    validParams<${2}>();
 
     /**
      *
@@ -44,8 +45,9 @@
 
     registerMooseObject("${2}", ${1});
 
-    template<>
-    InputParameters validParams<${1}>()
+    template <>
+    InputParameters
+    validParams<${1}>()
     {
       InputParameters params = validParams<MooseMesh>();
       params.addClassDescription("");

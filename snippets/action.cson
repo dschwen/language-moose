@@ -11,8 +11,9 @@
 
     class ${2};
 
-    template<>
-    InputParameters validParams<${2}>();
+    template <>
+    InputParameters
+    validParams<${2}>();
 
     /**
      *
@@ -20,7 +21,7 @@
     class ${2} : public Action
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${2}(const InputParameters& parameters);
 
       virtual void act() override;
     };
@@ -35,8 +36,9 @@
 
     registerMooseAction("${2}", ${1}, "${3}");
 
-    template<>
-    InputParameters validParams<${1}>()
+    template <>
+    InputParameters
+    validParams<${1}>()
     {
       InputParameters params = validParams<Action>();
       return params;

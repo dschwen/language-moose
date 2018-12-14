@@ -11,8 +11,9 @@
 
     class ${2};
 
-    template<>
-    InputParameters validParams<${2}>();
+    template <>
+    InputParameters
+    validParams<${2}>();
 
     /**
      *
@@ -39,8 +40,9 @@
 
     class ${2};
 
-    template<>
-    InputParameters validParams<${2}>();
+    template <>
+    InputParameters
+    validParams<${2}>();
 
     /**
      *
@@ -65,8 +67,9 @@
 
     registerMooseObject("${2}", ${1});
 
-    template<>
-    InputParameters validParams<${1}>()
+    template <>
+    InputParameters
+    validParams<${1}>()
     {
       InputParameters params = validParams<NodalBC>();
       params.addClassDescription("");
@@ -91,15 +94,16 @@
 
     registerMooseObject("${2}", ${1});
 
-    template<>
-    InputParameters validParams<${1}>()
+    template <>
+    InputParameters
+    validParams<${1}>()
     {
       InputParameters params = validParams<IntegratedBC>();
       return params;
     }
 
-    ${1}::${1}(const InputParameters & parameters) :
-        IntegratedBC(parameters)
+    ${1}::${1}(const InputParameters & parameters)
+      : IntegratedBC(parameters)
     {
     }
 
