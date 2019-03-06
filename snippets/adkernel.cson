@@ -51,7 +51,7 @@
     }
 
     template <ComputeStage compute_stage>
-    Real
+    ADResidual
     ${1}<compute_stage>::computeQpResidual()
     {
     }
