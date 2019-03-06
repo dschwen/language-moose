@@ -4,53 +4,53 @@
   'MOOSE nodal constraint header':
     'prefix': 'nodalconstraint-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "NodalConstraint.h"
 
-    class ${2};
+    class ${1};
 
     template <>
     InputParameters
-    validParams<${2}>();
+    validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public NodalConstraint
+    class ${1} : public NodalConstraint
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
     protected:
       virtual Real computeQpResidual(Moose::ConstraintType type) override;
       virtual Real computeQpJacobian(Moose::ConstraintJacobianType type) override;
     };
 
-    #endif // ${1}_H
+    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE nodeface constraint header':
     'prefix': 'nodefaceconstraint-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "NodeFaceConstraint.h"
 
-    class ${2};
+    class ${1};
 
     template <>
-    InputParameters validParams<${2}>();
+    InputParameters validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public NodeFaceConstraint
+    class ${1} : public NodeFaceConstraint
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
     protected:
       virtual Real computeQpSlaveValue() override;
@@ -58,29 +58,29 @@
       virtual Real computeQpJacobian(Moose::ConstraintJacobianType type) override
     };
 
-    #endif // ${1}_H
+    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE faceface constraint header':
     'prefix': 'facefaceconstraint-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "FaceFaceConstraint.h"
 
-    class ${2};
+    class ${1};
 
     template <>
-    InputParameters validParams<${2}>();
+    InputParameters validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public FaceFaceConstraint
+    class ${1} : public FaceFaceConstraint
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
     protected:
       virtual Real computeQpResidual() override;
@@ -88,36 +88,36 @@
       virtual Real computeQpJacobianSide(Moose::ConstraintJacobianType jac_type) override;
     };
 
-    #endif // ${1}_H
+    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE elemelem constraint header':
     'prefix': 'elemelemconstraint-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "ElemElemConstraint.h"
 
-    class ${2};
+    class ${1};
 
     template <>
-    InputParameters validParams<${2}>();
+    InputParameters validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public ElemElemConstraint
+    class ${1} : public ElemElemConstraint
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
     protected:
       virtual Real computeQpResidual(Moose::DGResidualType type) override;
       virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
     };
 
-    #endif // ${1}_H
+    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE nodal constraint implementation':

@@ -4,30 +4,30 @@
   'MOOSE time integrator header':
     'prefix': 'timeintegrator-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "TimeIntegrator.h"
 
-    class ${2};
+    class ${1};
 
     template <>
     InputParameters
-    validParams<${2}>();
+    validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public TimeIntegrator
+    class ${1} : public TimeIntegrator
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
       virtual int order() override;
       virtual void computeTimeDerivatives() override;
     };
 
-    #endif //${1}_H
+    #endif //${1/(.)/\\U$1/}_H
     """
 
   'MOOSE time integrator implementation':

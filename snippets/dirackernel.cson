@@ -4,31 +4,31 @@
   'MOOSE Dirac kernel header':
     'prefix': 'dirac-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "DiracKernel.h"
 
-    class ${2};
+    class ${1};
 
     template <>
     InputParameters
-    validParams<${2}>();
+    validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public DiracKernel
+    class ${1} : public DiracKernel
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
       virtual void addPoints() override;
       virtual Real computeQpResidual() override;
       virtual Real computeQpJacobian() override;
     };
 
-    #endif // ${1}_H
+    #endif // ${1/(.)/\\U$1/}_H
     """
 
 

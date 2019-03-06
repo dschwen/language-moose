@@ -4,31 +4,31 @@
   'MOOSE DG kernel header':
     'prefix': 'dgkernel-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "DGKernel.h"
 
-    class ${2};
+    class ${1};
 
     template <>
     InputParameters
-    validParams<${2}>();
+    validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public DGKernel
+    class ${1} : public DGKernel
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
     protected:
       virtual Real computeQpResidual(Moose::DGResidualType type) override;
       virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
     };
 
-    #endif // ${1}_H
+    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE DG kernel implementation':

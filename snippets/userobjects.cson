@@ -4,24 +4,24 @@
   'MOOSE user object header':
     'prefix': 'uo-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
-    #include "${3}.h"
+    #include "${2}.h"
 
-    class ${2};
+    class ${1};
 
     template <>
     InputParameters
-    validParams<${2}>();
+    validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public ${3}
+    class ${1} : public ${2}
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
       virtual void initialize() override;
       virtual void execute() override;
@@ -31,7 +31,7 @@
       virtual void threadJoin(const UserObject & y) override;
     };
 
-    #endif //${1}_H
+    #endif //${1/(.)/\\U$1/}_H
     """
 
   'MOOSE user object implementation':

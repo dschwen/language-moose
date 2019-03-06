@@ -4,29 +4,29 @@
   'MOOSE initial condition header':
     'prefix': 'ic-h'
     'body': """
-    #ifndef ${1}_H
-    #define ${1}_H
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
 
     #include "InitialCondition.h"
 
-    class ${2};
+    class ${1};
 
     template <>
     InputParameters
-    validParams<${2}>();
+    validParams<${1}>();
 
     /**
      *
      */
-    class ${2} : public InitialCondition
+    class ${1} : public InitialCondition
     {
     public:
-      ${2}(const InputParameters & parameters);
+      ${1}(const InputParameters & parameters);
 
       virtual Real value(const Point & p) override;
     };
 
-    #endif // ${1}_H
+    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE initial condition implementation':
