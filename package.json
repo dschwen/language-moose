@@ -1,6 +1,6 @@
 {
   "name": "language-moose",
-  "version": "0.26.2",
+  "version": "1.0.0",
   "engines": {
     "atom": "*",
     "node": "*"
