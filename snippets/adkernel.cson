@@ -1,0 +1,60 @@
+# Template for Kernel
+
+'.source.c, .source.cpp':
+  'MOOSE AD kernel header':
+    'prefix': 'adkernel-h'
+    'body': """
+    #ifndef ${1/(.)/\\U$1/}_H
+    #define ${1/(.)/\\U$1/}_H
+
+    #include "ADKernel.h"
+
+    template <ComputeStage>
+    class ${1};
+
+    declareADValidParams(${1});
+
+    /**
+     *
+     */
+    template <ComputeStage compute_stage>
+    class ${1} : public ADKernel<compute_stage>
+    {
+    public:
+      ${1}(const InputParameters & parameters);
+
+    protected:
+      virtual ADResidual computeQpResidual() override;
+
+      usingKernelMembers;
+    };
+
+    #endif // ${1/(.)/\\U$1/}_H
+    """
+
+  'MOOSE AD kernel implementation':
+    'prefix': 'adkernel-c'
+    'body': """
+    #include "${1}.h"
+
+    registerADMooseObject("${2}", ${1});
+
+    defineADValidParams(
+        ${1},
+        ADKernel,
+        params.addClassDescription(""););
+
+    template <ComputeStage compute_stage>
+    ${1}<compute_stage>::${1}(const InputParameters & parameters)
+      : ADKernel<compute_stage>(parameters)
+    {
+    }
+
+    template <ComputeStage compute_stage>
+    Real
+    ${1}<compute_stage>::computeQpResidual()
+    {
+    }
+
+    adBaseClass(${1});
+    """
