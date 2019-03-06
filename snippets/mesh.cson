@@ -43,7 +43,7 @@
     // libMesh includes
     #include "libmesh/mesh_generation.h"
 
-    registerMooseObject("${2}", ${1});
+    registerMooseObject("${2:AppName}App", ${1});
 
     template <>
     InputParameters

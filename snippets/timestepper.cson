@@ -36,7 +36,7 @@
     'body': """
     #include "${1}.h"
 
-    registerMooseObject("${2}", ${1});
+    registerMooseObject("${2:AppName}App", ${1});
 
     template <>
     InputParameters

@@ -34,7 +34,7 @@
     'body': """
     #include "${1}.h"
 
-    registerMooseAction("${2}", ${1}, "${3}");
+    registerMooseAction("${2:AppName}App", ${1}, "${3}");
 
     template <>
     InputParameters

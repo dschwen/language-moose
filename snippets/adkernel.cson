@@ -37,7 +37,7 @@
     'body': """
     #include "${1}.h"
 
-    registerADMooseObject("${2}", ${1});
+    registerADMooseObject("${2:AppName}App", ${1});
 
     defineADValidParams(
         ${1},

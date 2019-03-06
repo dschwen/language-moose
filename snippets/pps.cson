@@ -7,7 +7,7 @@
     #ifndef ${1/(.)/\\U$1/}_H
     #define ${1/(.)/\\U$1/}_H
 
-    #include "${2}.h"
+    #include "${2:GeneralPostprocessor}.h"
 
     class ${1};
 
@@ -18,7 +18,7 @@
     /**
      *
      */
-    class ${1} : public ${2}
+    class ${1} : public ${2:GeneralPostprocessor}
     {
     public:
       ${1}(const InputParameters & parameters);
@@ -40,19 +40,19 @@
     'body': """
     #include "${1}.h"
 
-    registerMooseObject("${3}", ${1});
+    registerMooseObject("${3:AppName}App", ${1});
 
     template <>
     InputParameters
     validParams<${1}>()
     {
-      InputParameters params = validParams<${2}>();
+      InputParameters params = validParams<${2:GeneralPostprocessor}>();
       params.addClassDescription("");
       return params;
     }
 
     ${1}::${1}(const InputParameters & parameters)
-      : ${2}(parameters)
+      : ${2:GeneralPostprocessor}(parameters)
     {
     }
 
