@@ -4,8 +4,7 @@
   'MOOSE material header':
     'prefix': 'material-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Material.h"
 
@@ -26,8 +25,6 @@
     protected:
       virtual void computeQpProperties() override;
     };
-
-    #endif //${1/(.)/\\U$1/}_H
     """
 
   'MOOSE material implementation':

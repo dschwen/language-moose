@@ -4,8 +4,7 @@
   'MOOSE action':
     'prefix': 'action-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Action.h"
 
@@ -25,8 +24,6 @@
 
       virtual void act() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE action implementation':

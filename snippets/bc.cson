@@ -4,8 +4,7 @@
   'MOOSE nodal boundary condition header':
     'prefix': 'nodalbc-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "NodalBC.h"
 
@@ -26,15 +25,12 @@
     protected:
       virtual Real computeQpResidual() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE integrated boundary condition header':
     'prefix': 'integratedbc-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "IntegratedBC.h"
 
@@ -56,8 +52,6 @@
       virtual Real computeQpResidual();
       virtual Real computeQpJacobian();
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE nodal boundary condition implementation':

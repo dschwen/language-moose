@@ -4,8 +4,7 @@
   'MOOSE nodal kernel header':
     'prefix': 'nodalkernel-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "NodalKernel.h"
 
@@ -26,8 +25,6 @@
     protected:
       virtual Real computeQpResidual() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE nodal kernel implementation':

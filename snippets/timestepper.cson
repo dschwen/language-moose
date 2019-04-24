@@ -4,8 +4,7 @@
   'MOOSE time stepper header':
     'prefix': 'timestepper-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "InitialCondition.h"
 
@@ -27,8 +26,6 @@
       virtual Real computeInitialDT() override;
       virtual Real computeDT() override;
     };
-
-    #endif //${1/(.)/\\U$1/}_H
     """
 
   'MOOSE time stepper implementation':

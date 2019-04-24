@@ -4,8 +4,7 @@
   'MOOSE function header':
     'prefix': 'function-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Function.h"
 
@@ -25,8 +24,6 @@
 
       virtual Real value(Real t, const Point & p) override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE function implementation':

@@ -4,8 +4,7 @@
   'MOOSE indicator header':
     'prefix': 'indicator-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Indicator.h"
 
@@ -25,8 +24,6 @@
 
       virtual void computeIndicator() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE indicator implementation':

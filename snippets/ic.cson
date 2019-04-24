@@ -4,8 +4,7 @@
   'MOOSE initial condition header':
     'prefix': 'ic-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "InitialCondition.h"
 
@@ -25,8 +24,6 @@
 
       virtual Real value(const Point & p) override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE initial condition implementation':

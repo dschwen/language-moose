@@ -4,8 +4,7 @@
   'MOOSE postprocessor header':
     'prefix': 'pps-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "${2:GeneralPostprocessor}.h"
 
@@ -31,8 +30,6 @@
       // only needed for ElementPostprocessors and NodalPostprocessors
       virtual void threadJoin(const UserObject & y) override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE postprocessor implementation':

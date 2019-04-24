@@ -4,8 +4,7 @@
   'MOOSE vector postprocessor header':
     'prefix': 'vectorpps-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "${2:GeneralVectorPostprocessor}.h"
 
@@ -30,8 +29,6 @@
       // only needed for ElementVectorPostprocessors and NodalVectorPostprocessors
       virtual void threadJoin(const UserObject & y) override;
     };
-
-    #endif //${1/(.)/\\U$1/}_H
     """
 
   'MOOSE vector postprocessor implementation':

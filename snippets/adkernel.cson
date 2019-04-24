@@ -4,8 +4,7 @@
   'MOOSE AD kernel header':
     'prefix': 'adkernel-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "ADKernel.h"
 
@@ -28,8 +27,6 @@
 
       usingKernelMembers;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE AD kernel implementation':

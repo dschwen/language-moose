@@ -4,8 +4,7 @@
   'MOOSE auxiliary kernel':
     'prefix': 'auxkernel-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "AuxKernel.h"
 
@@ -26,8 +25,6 @@
     protected:
       virtual Real computeValue() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE auxiliary kernel implementation':

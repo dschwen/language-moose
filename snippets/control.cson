@@ -4,8 +4,7 @@
   'MOOSE control header':
     'prefix': 'control-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Control.h"
 
@@ -25,8 +24,6 @@
 
       virtual void execute() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE constrol implementation':

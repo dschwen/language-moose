@@ -4,8 +4,7 @@
   'MOOSE damper header':
     'prefix': 'damper-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Damper.h"
 
@@ -26,8 +25,6 @@
     protected:
       virtual Real computeQpDamping() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE damper implementation':

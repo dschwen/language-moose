@@ -4,8 +4,7 @@
   'MOOSE predictor header':
     'prefix': 'predictor-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Predictor.h"
 
@@ -25,8 +24,6 @@
 
       virtual void apply(NumericVector<Number> & sln) override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE predictor implementation':

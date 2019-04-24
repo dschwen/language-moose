@@ -4,8 +4,7 @@
   'MOOSE DG kernel header':
     'prefix': 'dgkernel-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "DGKernel.h"
 
@@ -27,8 +26,6 @@
       virtual Real computeQpResidual(Moose::DGResidualType type) override;
       virtual Real computeQpJacobian(Moose::DGJacobianType type) override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE DG kernel implementation':

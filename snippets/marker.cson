@@ -4,8 +4,7 @@
   'MOOSE marker header':
     'prefix': 'marker-h'
     'body': """
-    #ifndef ${1/(.)/\\U$1/}_H
-    #define ${1/(.)/\\U$1/}_H
+    #pragma once
 
     #include "Marker.h"
 
@@ -26,8 +25,6 @@
     protected:
       virtual MarkerValue computeElementMarker() override;
     };
-
-    #endif // ${1/(.)/\\U$1/}_H
     """
 
   'MOOSE marker implementation':
