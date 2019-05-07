@@ -52,7 +52,7 @@
         'name': 'constant.other.filename.moose'
   }
   {
-    'match': '\\b(cli_args|expect_err)\\s*(=)\\s*(.*)'
+    'match': '\\b(cli_args|expect_err|group|design|requirement|issues)\\s*(=)\\s*(.*)'
     'captures':
       '1':
         'name': 'keyword.control.moose'
