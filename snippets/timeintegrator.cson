@@ -8,18 +8,14 @@
 
     #include "TimeIntegrator.h"
 
-    class ${1};
-
-    template <>
-    InputParameters
-    validParams<${1}>();
-
     /**
      *
      */
     class ${1} : public TimeIntegrator
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
       virtual int order() override;
@@ -34,9 +30,8 @@
 
     registerMooseObject("${2:AppName}App", ${1});
 
-    template <>
     InputParameters
-    validParams<${1}>()
+    ${1}::validParams()
     {
       InputParameters params = validParams<TimeIntegrator>();
       params.addClassDescription("");

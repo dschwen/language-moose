@@ -8,18 +8,14 @@
 
     #include "${2:GeneralPostprocessor}.h"
 
-    class ${1};
-
-    template <>
-    InputParameters
-    validParams<${1}>();
-
     /**
      *
      */
     class ${1} : public ${2:GeneralPostprocessor}
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
       virtual void initialize() override;
@@ -39,9 +35,8 @@
 
     registerMooseObject("${3:AppName}App", ${1});
 
-    template <>
     InputParameters
-    validParams<${1}>()
+    ${1}::validParams()
     {
       InputParameters params = validParams<${2:GeneralPostprocessor}>();
       params.addClassDescription("");

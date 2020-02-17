@@ -8,18 +8,14 @@
 
     #include "Material.h"
 
-    class ${1};
-
-    template <>
-    InputParameters
-    validParams<${1}>();
-
     /**
      *
      */
     class ${1} : public Material
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
     protected:
@@ -34,9 +30,8 @@
 
     registerMooseObject("${2:AppName}App", ${1});
 
-    template <>
     InputParameters
-    validParams<${1}>()
+    ${1}::validParams()
     {
       InputParameters params = validParams<Material>();
       params.addClassDescription("");

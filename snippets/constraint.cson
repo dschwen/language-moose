@@ -8,18 +8,14 @@
 
     #include "NodalConstraint.h"
 
-    class ${1};
-
-    template <>
-    InputParameters
-    validParams<${1}>();
-
     /**
      *
      */
     class ${1} : public NodalConstraint
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
     protected:
@@ -35,17 +31,14 @@
 
     #include "NodeFaceConstraint.h"
 
-    class ${1};
-
-    template <>
-    InputParameters validParams<${1}>();
-
     /**
      *
      */
     class ${1} : public NodeFaceConstraint
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
     protected:
@@ -62,17 +55,14 @@
 
     #include "FaceFaceConstraint.h"
 
-    class ${1};
-
-    template <>
-    InputParameters validParams<${1}>();
-
     /**
      *
      */
     class ${1} : public FaceFaceConstraint
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
     protected:
@@ -89,17 +79,14 @@
 
     #include "ElemElemConstraint.h"
 
-    class ${1};
-
-    template <>
-    InputParameters validParams<${1}>();
-
     /**
      *
      */
     class ${1} : public ElemElemConstraint
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
     protected:
@@ -115,9 +102,8 @@
 
     registerMooseObject("${2:AppName}App", ${1});
 
-    template <>
     InputParameters
-    validParams<${1}>()
+    ${1}::validParams()
     {
       InputParameters params = validParams<NodalConstraint>();
       params.addClassDescription("");
@@ -169,9 +155,8 @@
 
     registerMooseObject("${2:AppName}App", ${1});
 
-    template <>
     InputParameters
-    validParams<${1}>()
+    ${1}::validParams()
     {
       InputParameters params = validParams<NodeFaceConstraint>();
       params.addClassDescription("");
@@ -229,9 +214,8 @@
 
     registerMooseObject("${2:AppName}App", ${1});
 
-    template <>
     InputParameters
-    validParams<${1}>()
+    ${1}::validParams()
     {
       InputParameters params = validParams<FaceFaceConstraint>();
       params.addClassDescription("");
@@ -289,9 +273,8 @@
 
     registerMooseObject("${2:AppName}App", ${1});
 
-    template <>
     InputParameters
-    validParams<${1}>()
+    ${1}::validParams()
     {
       InputParameters params = validParams<ElemElemConstraint>();
       params.addClassDescription("");
