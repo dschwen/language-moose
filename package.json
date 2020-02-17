@@ -10,7 +10,7 @@
   "homepage": "https://atom.io/packages/language-moose",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dschwen/language-moose.git"
+    "url": "git@github.com:dschwen/language-moose.git"
   },
   "bugs": {
     "url": "https://github.com/dschwen/language-moose/issues"
