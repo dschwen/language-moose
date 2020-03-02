@@ -32,7 +32,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<InitialCondition>();
+      InputParameters params = InitialCondition::validParams();
       params.addClassDescription("");
       return params;
     }

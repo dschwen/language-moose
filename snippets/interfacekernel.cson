@@ -34,7 +34,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<InterfaceKernel>();
+      InputParameters params = InterfaceKernel::validParams();
       params.addClassDescription("");
       return params;
     }

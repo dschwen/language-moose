@@ -34,7 +34,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<DGKernel>();
+      InputParameters params = DGKernel::validParams();
       params.addClassDescription("");
       return params;
     }

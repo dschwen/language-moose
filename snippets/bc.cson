@@ -59,7 +59,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<NodalBC>();
+      InputParameters params = NodalBC::validParams();
       params.addClassDescription("");
       return params;
     }
@@ -85,7 +85,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<IntegratedBC>();
+      InputParameters params = IntegratedBC::validParams();
       return params;
     }
 

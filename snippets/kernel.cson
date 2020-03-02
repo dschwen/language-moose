@@ -34,7 +34,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<Kernel>();
+      InputParameters params = Kernel::validParams();
       params.addClassDescription("");
       return params;
     }
@@ -92,7 +92,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<VectorKernel>();
+      InputParameters params = VectorKernel::validParams();
       params.addClassDescription("");
       return params;
     }

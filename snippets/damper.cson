@@ -33,7 +33,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<Damper>();
+      InputParameters params = Damper::validParams();
       params.addClassDescription("");
       return params;
     }

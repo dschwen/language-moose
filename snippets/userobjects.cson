@@ -37,7 +37,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<${2:GeneralUserObject}>();
+      InputParameters params = ${2:GeneralUserObject}::validParams();
       params.addClassDescription("");
       return params;
     }

@@ -33,7 +33,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<Material>();
+      InputParameters params = Material::validParams();
       params.addClassDescription("");
       return params;
     }

@@ -33,7 +33,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<TimeIntegrator>();
+      InputParameters params = TimeIntegrator::validParams();
       params.addClassDescription("");
       return params;
     }

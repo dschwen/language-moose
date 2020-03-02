@@ -37,7 +37,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<${2:GeneralVectorPostprocessor}>();
+      InputParameters params = ${2:GeneralVectorPostprocessor}::validParams();
       params.addClassDescription("");
       return params;
     }

@@ -105,7 +105,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<NodalConstraint>();
+      InputParameters params = NodalConstraint::validParams();
       params.addClassDescription("");
       return params;
     }
@@ -158,7 +158,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<NodeFaceConstraint>();
+      InputParameters params = NodeFaceConstraint::validParams();
       params.addClassDescription("");
       return params;
     }
@@ -217,7 +217,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<FaceFaceConstraint>();
+      InputParameters params = FaceFaceConstraint::validParams();
       params.addClassDescription("");
       return params;
     }
@@ -276,7 +276,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<ElemElemConstraint>();
+      InputParameters params = ElemElemConstraint::validParams();
       params.addClassDescription("");
       return params;
     }

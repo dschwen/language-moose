@@ -41,7 +41,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<MooseMesh>();
+      InputParameters params = MooseMesh::validParams();
       params.addClassDescription("");
       return params;
     }

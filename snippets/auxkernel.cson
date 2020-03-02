@@ -33,7 +33,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<AuxKernel>();
+      InputParameters params = AuxKernel::validParams();
       params.addClassDescription("");
       return params;
     }

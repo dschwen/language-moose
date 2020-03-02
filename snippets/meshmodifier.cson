@@ -32,7 +32,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<MeshModifier>();
+      InputParameters params = MeshModifier::validParams();
       params.addClassDescription("");
       return params;
     }

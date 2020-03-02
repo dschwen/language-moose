@@ -33,7 +33,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<Marker>();
+      InputParameters params = Marker::validParams();
       params.addClassDescription("");
       return params;
     }

@@ -32,7 +32,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<Action>();
+      InputParameters params = Action::validParams();
       return params;
     }
 

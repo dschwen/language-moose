@@ -33,7 +33,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<MultiApp>();
+      InputParameters params = MultiApp::validParams();
       params.addClassDescription("");
       return params;
     }

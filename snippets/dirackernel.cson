@@ -35,7 +35,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<DiracKernel>();
+      InputParameters params = DiracKernel::validParams();
       params.addClassDescription("");
       return params;
     }

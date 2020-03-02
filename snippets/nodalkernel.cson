@@ -33,7 +33,7 @@
     InputParameters
     ${1}::validParams()
     {
-      InputParameters params = validParams<NodalKernel>();
+      InputParameters params = NodalKernel::validParams();
       params.addClassDescription("");
       return params;
     }
