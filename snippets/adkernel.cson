@@ -20,7 +20,7 @@
       ${1}(const InputParameters & parameters);
 
     protected:
-      virtual ADResidual computeQpResidual() override;
+      virtual ADReal computeQpResidual() override;
 
       usingKernelMembers;
     };
@@ -49,7 +49,7 @@
     }
 
     template <ComputeStage compute_stage>
-    ADResidual
+    ADReal
     ${1}<compute_stage>::computeQpResidual()
     {
     }
