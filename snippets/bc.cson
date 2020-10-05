@@ -30,17 +30,14 @@
 
     #include "IntegratedBC.h"
 
-    class ${1};
-
-    InputParameters
-    ${1}::validParams();
-
     /**
      *
      */
     class ${1} : public IntegratedBC
     {
     public:
+      static InputParameters validParams();
+
       ${1}(const InputParameters & parameters);
 
     protected:
