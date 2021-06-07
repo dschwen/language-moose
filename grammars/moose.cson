@@ -10,13 +10,13 @@
     'include': '#comments'
   }
   {
-    'match': '(\\[)(Adaptivity|Bounds|Mesh|MeshGenerators|MeshModifiers|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions|GlobalParams|VectorPostprocessors|Dampers|DiracKernels|DGKernels|Constraints|NodalNormals|CoupledProblems|DeprecatedBlock|MultiApps|Transfers|InterfaceKernels|NodalKernels|Controls|Modules)(\\])'
+    'match': '(\\[)(Adaptivity|Bounds|Mesh|MeshGenerators|MeshModifiers|Kernels|AuxKernels|ScalarKernels|AuxScalarKernels|FVKernels|RayKernels|Variables|AuxVariables|Materials|Postprocessors|BCs|FVBCs|RayBCs|ICs|Executioner|Outputs|Problem|Debug|Preconditioning|UserObjects|Functions|GlobalParams|VectorPostprocessors|Dampers|DiracKernels|DGKernels|Constraints|NodalNormals|CoupledProblems|DeprecatedBlock|MultiApps|Transfers|InterfaceKernels|FVInterfaceKernels|NodalKernels|Controls|Modules|Distributions|Reporters|Samplers|Trainers|Surrogates|Covariance)(\\])'
     'captures':
       '2':
         'name': 'keyword.control.moose'
   }
   {
-    'match': '\\[(\\.\\/)(TimeStepper|TimePeriods|Quadrature|Predictor|Adaptivity|Indicators|Markers|Periodic|InitialCondition|MortarInterfaces)\\]'
+    'match': '\\[(\\.\\/)(TimeStepper|TimePeriods|TimeIntegrator|Quadrature|Predictor|Adaptivity|Indicators|Markers|Periodic|InitialCondition|MortarInterfaces|Partitioner)\\]'
     'captures':
       '1':
         'name': 'moose'
