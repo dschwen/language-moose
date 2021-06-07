@@ -42,7 +42,7 @@
         'name': 'entity.name.function.moose'
   }
   {
-    'match': '\\b(input|csvdiff|exodiff)\\s*(=)\\s*(.*)'
+    'match': '\\b(input|csvdiff|exodiff|jsondiff|xmldiff)\\s*(=)\\s*(.*)'
     'captures':
       '1':
         'name': 'keyword.control.moose'
@@ -51,8 +51,9 @@
       '3':
         'name': 'constant.other.filename.moose'
   }
+  # String parameters
   {
-    'match': '\\b(cli_args|expect_err|group|design|requirement|issues)\\s*(=)\\s*(.*)'
+    'match': '\\b(cli_args|command|absent_out|expect_err|expect_out|file_expect_out|input_switch|group|design|requirement|issues|detail|method|prereq|collections|required_python_packages|valgrind|petsc_version|ad_indexing_type|ad_mode|check_files|check_not_exists|errors|exodiff_opts|library_mode|skip|skip_keys)\\s*(=)\\s*(.*)'
     'captures':
       '1':
         'name': 'keyword.control.moose'
@@ -61,7 +62,28 @@
       '3':
         'name': 'string.quoted.moose'
   }
-
+  # Numeric parameters
+  {
+    'match': '\\b(min_parallel|max_parallel|min_threads|max_threads|rel_err|abs_zero|ratio_tol|difference_tol|scale_refine|dof_id_bytes|max_buffer_size|max_time|python)\\s*(=)\\s*(.*)'
+    'captures':
+      '1':
+        'name': 'keyword.control.moose'
+      '2':
+        'name': 'keyword.operator.moose'
+      '3':
+        'name': 'constant.numeric.moose'
+  }
+  # Booleans and traditionally non-quoted strings
+  {
+    'match': '\\b(recover|allow_warnings|allow_deprecated|allow_unused|allow_test_objects|delete_output_before_running|delete_output_folders|test_case|match_literal|use_old_floor|compiler|display_required|threading|mesh_mode|run_sim|vtk|deleted|deprecated|no_error_deprecated|custom_cmp|off_diagonal|parallel_scheduling|petsc_version_release|should_crash|should_execute|timing|turn_off_exodus_output|unique_id)\\s*(=)\\s*(.*)'
+    'captures':
+      '1':
+        'name': 'keyword.control.moose'
+      '2':
+        'name': 'keyword.operator.moose'
+      '3':
+        'name': 'string.quoted.moose'
+  }
   {
     'match': '\\[(\\.+/)\\]'
     'captures':
