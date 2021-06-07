@@ -85,6 +85,48 @@
         'name': 'string.quoted.moose'
   }
   {
+    'match': '\\b(valgrind)\\s*(=)\\s*(HEAVY)'
+    'captures':
+      '1':
+        'name': 'keyword.control.moose'
+      '2':
+        'name': 'keyword.operator.moose'
+      '3':
+        'name': 'keyword.operator.moose'
+  }
+  {
+    'match': '\\b(valgrind)\\s*(=)\\s*\'(HEAVY)\''
+    'captures':
+      '1':
+        'name': 'keyword.control.moose'
+      '2':
+        'name': 'keyword.operator.moose'
+      '3':
+        'name': 'keyword.operator.moose'
+  }
+
+  {
+    'match': '\\b(skip)\\s*(=)\\s*(.*)'
+    'captures':
+      '1':
+        'name': 'keyword.control.moose'
+      '2':
+        'name': 'keyword.operator.moose'
+      '3':
+        'name': 'moose.error'
+  }
+  {
+    'match': '\\b(prereq)\\s*(=)\\s*(.*)'
+    'captures':
+      '1':
+        'name': 'keyword.control.moose'
+      '2':
+        'name': 'keyword.operator.moose'
+      '3':
+        'name': 'support.function.moose'
+  }
+
+  {
     'match': '\\[(\\.+/)\\]'
     'captures':
       '1':
@@ -95,22 +137,6 @@
     'captures':
       '1':
         'name': 'moose'
-  }
-  {
-    'match': '\\bfamily\\s*(=)\\s*(LAGRANGE|MONOMIAL|HERMITE|SCALAR|HIERARCHIC|CLOUGH|XYZ|SZABAB|BERNSTEIN|L2_LAGRANGE|L2_HIERARCHIC)\\b'
-    'captures':
-      '1':
-        'name': 'keyword.operator.assignment.moose'
-      '2':
-        'name': 'constant.language.moose'
-  }
-  {
-    'match': '\\belem_type\\s*(=)\\s*(EDGE|EDGE2|EDGE3|EDGE4|QUAD|QUAD4|QUAD8|QUAD9|TRI3|TRI6|HEX|HEX8|HEX20|HEX27|TET4|TET10|PRISM6|PRISM15|PRISM18)\\b'
-    'captures':
-      '1':
-        'name': 'keyword.operator.assignment.moose'
-      '2':
-        'name': 'constant.language.moose'
   }
   {
     # string parameters

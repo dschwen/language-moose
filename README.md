@@ -1,6 +1,6 @@
 # MOOSE input file support in Atom
 
-Add syntax highlighting and snippets to MOOSE input files in Atom.
+Add syntax highlighting and snippets to MOOSE input and test spec files in Atom.
 
 ![screenshot](http://i.imgur.com/57fmKBz.png)
 
