@@ -1,3 +1,5 @@
+> With the [announcement of Atom getting sunsetted](https://github.blog/2022-06-08-sunsetting-atom/) I have switched to VSCode and have migrated and continued development of this plugin there. Check out the [MOOSE Language Support](https://marketplace.visualstudio.com/items?itemName=DanielSchwen.moose-language-support) extension for your MOOSE input editing needs.
+
 # MOOSE input file support in Atom
 
 Add syntax highlighting and snippets to MOOSE input and test spec files in Atom.
